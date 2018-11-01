@@ -5,12 +5,14 @@
  */
 package Snake;
 
+import static Snake.Game.s;
 import java.util.Random;
 
 
 public class Point {
   private Random rnd = new Random();
-    public static int width,height,x,y;
+  public int width,height,x,y;
+  public int random =0;
   public Point(int width,int height){
       this.width =width;
       this.height =height;
@@ -18,10 +20,29 @@ public class Point {
   }
   
   public void update(){
-     x = rnd.nextInt(width*height);
-     y = rnd.nextInt(width*height);
-     
+      if( random == 0){
+     random = rnd.nextInt(width*height);
+     this.y= (int) Math.floor(random / width);
+     System.out.println("y: "+y);
+     this.x= random - y*width;
+     System.out.println("x: "+x);
+      }
+      
+           
+      }
+   public void render(){
+       int vel =8;
+       int x = s.point.x;
+       int y = s.point.y;
+      
+        for (int j = x ;j<vel+x;j++){
+                
+           for(int i = x; i<vel+x;i++){
+               
+                    s.pixels[i+j*width]=0x000000;
+           } 
+            
+        }
+  
   }
-  
-  
 }

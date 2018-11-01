@@ -12,9 +12,10 @@ public class Game extends Canvas implements Runnable {
     private static final long serialVersionUID = 1L;
     public static int width = 400;
     public static int height = 400;
+    public static int vel =8;
     private String title ="Snake";
     public Point point=new Point(width,height);
-    public Snake snake = new Snake(30,30,5);
+    public Snake snake;
     private Thread thread;
     public Screen screen=new Screen(width,height);
     public boolean running;
@@ -24,7 +25,7 @@ public class Game extends Canvas implements Runnable {
     public static Game s;
     public Keyboard key = new Keyboard();
     public JFrame Okno = new JFrame();
-    BufferedImage image= new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+    BufferedImage image= new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
     int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
     public static void main(String args[]){
        
@@ -36,6 +37,7 @@ public class Game extends Canvas implements Runnable {
         s.start();
     }
     public Game(){
+        snake = new Snake(30,30,5,key);
         Okno.setExtendedState(JFrame.MAXIMIZED_BOTH); 
        
         Okno.setUndecorated(false);
@@ -80,12 +82,13 @@ public class Game extends Canvas implements Runnable {
         screen.renderMap();
         snake.render(screen);
         for(int i =0;i<pixels.length;i++ ){
-            pixels[i]=screen.pixels[i];
+            this.pixels[i]=screen.pixels[i];
         }
         Graphics g = bs.getDrawGraphics();
         
         g.drawString(" X: "+snake.x+", Y: "+snake.y,450,400);
-        g.drawImage(image,0,0, width, height, null);
+        g.drawImage(image,0,0, null);
+        g.dispose();
         bs.show();
         
     }

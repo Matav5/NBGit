@@ -5,6 +5,7 @@
  */
 package Snake;
 import Snake.Game;
+import static Snake.Game.s;
 public class Screen {
     
     public int width, height;
@@ -25,26 +26,23 @@ public class Screen {
             pixels[i]=0;
         }
     }
-    
     public void renderSnake(int x, int y){
         
-        for (y = y ;y<2;y++){
-           for(x =0; x<2;x++){
-               pixels[x+y*width]= 0x00;
-           } 
-            
-        }
-        renderPoint();
-        
+           
+         
+               
     }
+    
     public void renderPoint(){
-        
-       int x = Point.x;
-       int y = Point.y;
-       
-        for (y = y ;y<2;y++){
-           for(x = x; x<2;x++){
-               pixels[x+y*width]=0x00;
+       int vel =8;
+       int x = s.point.x;
+       int y = s.point.y;
+      
+        for (int j = x ;j<vel+x;j++){
+                
+           for(int i = x; i<vel+x;i++){
+               
+                    pixels[i+j*width]=0x000000;
            } 
             
         }
@@ -54,10 +52,11 @@ public class Screen {
     public void renderMap() {
         for(int y =0; y<height;y++){
             for(int x =0;x<width;x++)
-                pixels[x+y*width]=0xffffff;
+                pixels[x+y*width]=0xFFFFFF;
             
         }
 
+        renderPoint();
     }
     
         

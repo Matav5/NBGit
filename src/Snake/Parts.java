@@ -21,8 +21,20 @@ public class Parts{
     
     public Parts(int x, int y, short smer){
             
-     
+     this.x=x;
+     this.y=y;
+     this.smer=smer;
         
     }
+    public int getX(){ 
+        return x;
+    }
+    public int getY(){ 
+        return y;
+    }
+    public int getSmer(){ 
+        return smer;
+    }
+    
     
 }
