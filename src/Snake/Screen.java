@@ -38,7 +38,7 @@ public class Screen {
        int x = s.point.x;
        int y = s.point.y;
       
-        for (int j = x ;j<vel+x;j++){
+        for (int j = y ;j<vel+y;j++){
                 
            for(int i = x; i<vel+x;i++){
                

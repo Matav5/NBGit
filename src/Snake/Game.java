@@ -19,7 +19,7 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     public Screen screen=new Screen(width,height);
     public boolean running;
-    public short smer;
+   
     public static int secs =1000;
     public double target = 5;
     public static Game s;
@@ -37,7 +37,7 @@ public class Game extends Canvas implements Runnable {
         s.start();
     }
     public Game(){
-        snake = new Snake(30,30,5,key);
+        snake = new Snake(30,30,0,key);
         Okno.setExtendedState(JFrame.MAXIMIZED_BOTH); 
        
         Okno.setUndecorated(false);
@@ -81,7 +81,7 @@ public class Game extends Canvas implements Runnable {
         screen.clear();
         screen.renderMap();
         snake.render(screen);
-        for(int i =0;i<pixels.length;i++ ){
+        for(int i =0;i<pixels.length;i++){
             this.pixels[i]=screen.pixels[i];
         }
         Graphics g = bs.getDrawGraphics();
